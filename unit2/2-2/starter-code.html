@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>WDV321 Advanced Javascript</title>
+    <style>
+        .displayContainer {
+            border: thin solid black;
+            width: 50%;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>WDV321 Advanced JavaScript</h1>
+    <h2>Dynamic Structure - Menu Builder Activity</h2>
+    <p>
+        In this activity, you will create a dynamic menu page.
+        The user selects a food category, and the matching menu options will appear.
+        Use the <b>display</b> property in CSS to hide and show the sections.
+    </p>
+
+    <p><strong>Steps:</strong></p>
+    <ol>
+        <li>Create a div that contains a dropdown list of food categories.</li>
+        <li>Create three divs for different food categories: Appetizers, Main Dishes, and Desserts.</li>
+        <li>Initially hide all divs using the <code>display</code> property.</li>
+        <li>Use JavaScript to display the correct div based on the user’s selection.</li>
+    </ol>
+
+    <label for="foodType"><strong>Select Food Category:</strong></label>
+    <select id="foodType">
+        <option value="">-- Select --</option>
+        <option value="appetizers">Appetizers</option>
+        <option value="main">Main Dishes</option>
+        <option value="desserts">Desserts</option>
+    </select>
+
+    <section class="displayContainer">
+        <div id="appetizers" class="hidden">
+            <h3>Appetizers</h3>
+            <ul>
+                <li>Garlic Bread</li>
+                <li>Fried Calamari</li>
+                <li>Bruschetta</li>
+                <li>Stuffed Mushrooms</li>
+            </ul>
+        </div>
+
+        <div id="main" class="hidden">
+            <h3>Main Dishes</h3>
+            <ul>
+                <li>Grilled Salmon</li>
+                <li>Chicken Parmesan</li>
+                <li>Beef Stir Fry</li>
+                <li>Vegetable Pasta</li>
+            </ul>
+        </div>
+
+        <div id="desserts" class="hidden">
+            <h3>Desserts</h3>
+            <ul>
+                <li>Cheesecake</li>
+                <li>Chocolate Lava Cake</li>
+                <li>Tiramisu</li>
+                <li>Fruit Tart</li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>
