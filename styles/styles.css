@@ -1,0 +1,75 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+a {
+  color:rgb(79, 122, 232);
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration:underline;
+  color:rgb(246, 242, 9);
+}
+
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:100;
+  font-style: thin;
+}
+
+body {
+  background-image: url(../bg-leaves-1920x1280.jpg);
+  background: no-repeat contain;
+  color:white;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  display:grid;
+  grid-template-areas:
+  "header"
+  "list-header"
+  "col1";
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap:0.625em;
+}
+
+header {
+  grid-area:header;
+  margin-bottom:1em;
+  text-align: center;
+  background-color:rgba(0, 0, 0, 0.58);
+  box-shadow:0 0 1em 0.625em rgba(3, 3, 3, 0.649);
+  padding:2em;
+}
+
+.assgns-list {
+  grid-area:col1;
+  padding:1em;
+  margin:0 2em;
+  border: 0.3em outset rgba(50, 49, 49, 0.851);
+  box-shadow:0 0 1em 0.625em rgba(3, 3, 3, 0.649);
+  background-color:rgba(0, 0, 0, 0.513);
+  font-family:"Montserrat", sans-serif;
+}
+
+.assgns-list h2 {
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 2em;
+}
+
+h3 {
+  text-align:center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size:1.5em;
+  margin:.5em;
+}
+
+ul {
+  list-style-type:"➔  ";
+  padding:1em;
+  margin:1em 2em;
+}
