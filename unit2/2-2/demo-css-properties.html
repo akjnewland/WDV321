@@ -12,6 +12,7 @@
       padding: 10px;
     }
   </style>
+  <script src="css-demo-script.js" defer></script>
 </head>
 
 <body>
@@ -32,7 +33,8 @@
     display the requested content in the Display Container section. For this exercise use
     the CSS display property to show/remove the requested content areas.
   </p>
-  <h4>Customer Service Complaints:</h4>
+  
+
   <p>
     <label>Reason For Contact:
       <select name="contactType" id="contactType">
@@ -44,9 +46,47 @@
     </label>
   </p>
   <section class="displayContainer">
-    <p> </p>
-  </section>
-  <p> </p>
+    <p>
+      <div id="complaints" style="display:none">
+        <h4>Customer Service Complaints:</h4>
+        <ul>
+            <li>Poor customer service</li>
+            <li>Payment system not working</li>
+            <li>Cannot update or change account information</li>
+            <li>False advertising</li>
+        </ul>
+      </div>
+
+      <div id="techProblems" style="display:none">
+        <h4>Customer Service Technical Problems:</h4>
+        <input type="checkbox" id="frgtpwd" value="Forgot Password">
+        <label for="frgtpwd">Forgot Password</label><br>
+        
+        <input type="checkbox" id="frgtusnm" value="Forgot Username">
+        <label for="frgtusnm">Forgot Username</label><br>
+        
+        <input type="checkbox" id="siteLoad" value="Site Loading Incorrectly">
+        <label for="siteLoad">Site not loading correctly</label><br>
+        
+        <input type="checkbox" id="missingVerification" value="Missing Verification">
+        <label for="missingVerification">Cannot verify email / not receiving email verification</label>
+      </div>
+
+      <div id="productIssues" style="display:none">
+        <h4>Customer Service Product Issues:</h4>
+        <input type="radio" name="productIssue" value="Unreceived product">
+        <label for="productIssue">Have not received product</label><br>
+
+        <input type="radio" name="productIssue" value="Damaged product">
+        <label for="productIssue">Product damaged or malfunctioning</label><br>
+
+        <input type="radio" name="productIssue" value="Incorrect product">
+        <label for="productIssue">Received incorrect product</label><br>
+
+        <input type="radio" name="productIssue" value="Missing products">
+        <label for="productIssue">Have not received full amount of order</label>
+      </div> 
+    </p>
   <p>&nbsp;</p>
 </body>
 

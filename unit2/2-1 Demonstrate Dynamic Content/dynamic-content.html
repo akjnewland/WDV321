@@ -30,7 +30,7 @@
 
     const teamNames = ["Chiefs", "Raiders", "Cubs"];
     const cookies = ["Chocolate Chip Cookie", "Sugar Cookie", "Peanut Butter Cookie"];
-    const candies = ["M&Ms", "Baby Ruth", "Snickes"];
+    const candies = ["M&Ms", "Baby Ruth", "Snickers"];
   </script>
   <script>
     window.onload = () => {
@@ -64,15 +64,15 @@
           <h3>Team Names</h3>
           <div>
             <label for="teamNames">Team Names</label>
-            <select name="teamNames" id="teamNames">
+            <select name="teamNames" id="teamsList">
               <option value="">Select a team</option>
               <script>
                 teamNames.forEach((teamName) => {
                   document.write(`<option>${teamName}</option>`)
                 })
 
-                document.getElementById("teamNames").addEventListener("change", () => {
-                  const selectedTeam = document.getElementById("teamNames").value;
+                document.getElementById("teamsList").addEventListener("change", () => {
+                  const selectedTeam = document.getElementById("teamsList").value;
                   const outputName = document.getElementById("outputName");
                   outputName.textContent = selectedTeam;
                 })
@@ -92,14 +92,12 @@
                 document.getElementById("teamBtn").addEventListener("click", () => {
                   event.preventDefault();
                   const newTeam = document.getElementById("newTeamName").value;
-                  const select = document.getElementById("teamNames");
+                  const select = document.getElementById("teamsList");
                   const option = document.createElement("option");
                   teamNames.push(newTeam);
+                  option.textContent = newTeam;
+                  select.add(option);
                     
-                  teamNames.forEach((newTeam) => {
-                    option.textContent = newTeam;
-                    select.add(option);
-                  });
                 });
               </script>
               <input type="reset" id="resetBtn">
@@ -107,10 +105,22 @@
                 document.getElementById("resetBtn").addEventListener("click", () => {
                   const outputName = document.getElementById("outputName");
                   outputName.innerHTML = "";
-                  
-                  const outputProduct = document.getElementById("outputProduct");
-                  outputProduct.innerHTML = "";
-                })
+
+                  const teamsList = document.getElementById("teamsList");
+                  teamsList.innerHTML = "";
+                  const option2 = document.createElement("option");
+                  option2.value = "";
+                  option2.textContent = "Select a team";
+                  teamsList.appendChild(option2);
+
+                  teamNames.forEach((teamName) => {
+                    const teamOption = document.createElement("option");
+                    teamOption.value = teamName;
+                    teamOption.textContent = teamName;
+                    teamsList.appendChild(teamOption);
+                  // add reset for this dropdown menu then add one below as well - problem is it's resetting after the name has been added to the array
+                });
+              });
               </script>
               </form>
             </p>
@@ -151,12 +161,17 @@
               const cookieBtn = document.getElementById("displayCookies");
               document.getElementById("displayCookies").addEventListener("change", () => {
                 if(cookieBtn.checked){
+                  productDisplay.innerHTML = "";
+                  const selectOption = document.createElement("option");
+                  selectOption.textContent = "Select a Product";
+                  productDisplay.append(selectOption);
+
                   cookies.forEach((cookie) => {
                     const select = document.getElementById("productDisplay");
                     const option = document.createElement("option");
                     option.textContent = cookie;
-                    select.appendChild(option);
-                  })
+                    select.append(option);
+                  });
                 }
               })
             </script>
@@ -167,16 +182,34 @@
               const candyBtn = document.getElementById("displayCandy");
               document.getElementById("displayCandy").addEventListener("change", () => {
                 if(candyBtn.checked){
+                  productDisplay.innerHTML = "";
+                  const selectOption = document.createElement("option");
+                  selectOption.textContent = "Select a Product";
+                  productDisplay.append(selectOption);
+
                   candies.forEach((candy) => {
                     const select = document.getElementById("productDisplay");
                     const option = document.createElement("option");
                     option.textContent = candy;
-                    select.appendChild(option);
-                  })
+                    select.append(option);
+                  }); 
                 }
               })
             </script>
-          </p>
+            </p>
+            <input type="reset" id="resetProductsBtn">
+            <script>
+              document.getElementById("resetProductsBtn").addEventListener("click", () => {
+                const outputProduct = document.getElementById("outputProduct");
+                outputProduct.innerHTML = "";
+
+                productDisplay.innerHTML = "";
+                
+                productDisplay.append(selectOption);
+
+                  // add reset for dropdown menu then resubmit assignment
+              });
+            </script>
           <div>
             <h4>Instructions:</h4>
             <ol>
