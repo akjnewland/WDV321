@@ -27,8 +27,8 @@
     }
   </style>
   <script>
-
-    const teamNames = ["Chiefs", "Raiders", "Cubs"];
+    const teams = ["Chiefs", "Raiders", "Cubs"];
+    const teamNames = [...teams];
     const cookies = ["Chocolate Chip Cookie", "Sugar Cookie", "Peanut Butter Cookie"];
     const candies = ["M&Ms", "Baby Ruth", "Snickers"];
   </script>
@@ -113,12 +113,11 @@
                   option2.textContent = "Select a team";
                   teamsList.appendChild(option2);
 
-                  teamNames.forEach((teamName) => {
+                  teams.forEach((teamName) => {
                     const teamOption = document.createElement("option");
                     teamOption.value = teamName;
                     teamOption.textContent = teamName;
                     teamsList.appendChild(teamOption);
-                  // add reset for this dropdown menu then add one below as well - problem is it's resetting after the name has been added to the array
                 });
               });
               </script>
@@ -202,10 +201,13 @@
               document.getElementById("resetProductsBtn").addEventListener("click", () => {
                 const outputProduct = document.getElementById("outputProduct");
                 outputProduct.innerHTML = "";
-
                 productDisplay.innerHTML = "";
-                
+                const selectOption = document.createElement("option");
+                selectOption.textContent = "Select a Product";
                 productDisplay.append(selectOption);
+
+                cookieBtn.checked = false; 
+                candyBtn.checked = false; 
 
                   // add reset for dropdown menu then resubmit assignment
               });
