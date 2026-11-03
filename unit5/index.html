@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="#">
+    <label>
+      Name:
+      <input type="text" name="name">
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.querySelector("form").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      fetch('data.html')
+        .then(res => res.text())
+        .then(res => console.log(data));
+    })
+  </script>
+</body>
+
+</html>

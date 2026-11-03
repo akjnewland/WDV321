@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <form action="" id="personForm">
+    <label>
+      Name:<input type="text" id="name">
+    </label>
+    <br>
+    <br>
+    <label>
+      Role:<input type="text" id="role">
+    </label>
+    <br>
+    <br>
+    <button type="submit">Store Data</button>
+  </form> 
+
+  <script>
+    const people = JSON.parse(localStorage.getItem('person')) || [];
+
+    document.getElementById("personForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      
+      const nameValue = document.getElementById("name").value;
+      const roleValue = document.getElementById("role").value;
+
+      const person =
+        {
+          nameValue,
+          roleValue
+        };
+        people.push(person);
+        localStorage.setItem('person', JSON.stringify(people))
+
+    });
+  </script>
+</body>
+</html>
