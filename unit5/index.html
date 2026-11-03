@@ -16,13 +16,19 @@
     <button type="submit">Submit</button>
   </form>
 
+  <div id="output"></div>
+
   <script>
     document.querySelector("form").addEventListener("submit", (e) => {
       e.preventDefault();
 
-      fetch('data.html')
-        .then(res => res.text())
-        .then(res => console.log(data));
+      fetch('data.json')
+        .then(res => res.json())
+        .then(data => { 
+          data.forEach((datum) => {
+            document.getElementById("output").textContent += datum.data;
+          });
+        });
     })
   </script>
 </body>
