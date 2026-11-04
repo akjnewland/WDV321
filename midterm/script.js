@@ -124,6 +124,8 @@ document.addEventListener("submit", (e) => {
     em.textContent = "Game cannot be Fast Play and Long Game. Please select one or the other.";
     textBox.append(p);
     document.querySelector('input[name="gameOptions"]').focus();
+  } else {
+    
   }
 });
 
@@ -150,9 +152,11 @@ class Game {
 
 // What’s next
 
-// Once the checkbox selector is fixed, validation is complete. After that comes the success path: add a final else after the chain where you will:
+// Once the checkbox selector is fixed, validation is complete. 
+// After that comes the success path: add a final else after the chain where you will:
 
-// Build a new Game(...) from the values (trimmedInput, gameType.value, playerCount, radios.value, and the checkedValue array).
+// Build a new Game(...) from the values 
+// (trimmedInput, gameType.value, playerCount, radios.value, and the checkedValue array).
 // console.log the game.
 // Call gameLibrary.addGame(...).
 // console.log the library.
