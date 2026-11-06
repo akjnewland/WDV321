@@ -17,8 +17,27 @@ const gameNameInput = document.getElementById("gameName");
 const textBox = document.getElementById("textBox");
 const p = document.createElement("p");
 const em = document.createElement("em");
-p.append(em);
 updateCurrYear();
+const displayGameLibrary = document.querySelector(".displayGameLibrary");
+const gameBoxes = document.querySelector('div[class="gameBoxes"]');
+
+// Game Library
+const gameLibrary = {
+  games: [],
+  addGame(game) {
+    this.games.push(game);
+  }
+}
+
+class Game {
+  constructor(title, type, playerCount, rating, extras = []) {
+    this.title = title;
+    this.type = type;
+    this.playerCount = playerCount;
+    this.rating = rating;
+    this.extras = extras;
+  }
+}
 
 // Dropdown with parallel arrays
 gameTypes.forEach((game, index) => {
@@ -54,7 +73,7 @@ gameOptions.forEach((game) => {
   input.setAttribute("type", "checkbox");
   input.id = "gameOptions" + game;
   input.name = "gameOptions";
-  input.value = game[0];
+  input.value = game;
 
   label.htmlFor = input.id;
   label.append(input, game)
@@ -74,16 +93,14 @@ function updateCurrYear() {
 
 function isWholeNumber(value) {
   if (value % 1 === 0) {
-    console.log(value + ' is a whole number');
     return true;
   } else {
-    console.log(value + ' is not a whole number');
     return false;
   }
 }
 
-// Listener Event for Form Submission
-document.addEventListener("submit", (e) => {
+// Add Game Button - Listener Event / Form Submission
+document.getElementById("addGameBtn").addEventListener("click", (e) => {
   e.preventDefault();
 
   em.textContent = "";
@@ -92,6 +109,7 @@ document.addEventListener("submit", (e) => {
   let trimmedInput = gameNameInput.value.trim();
   let checkedValue = [...document.querySelectorAll('input[name="gameOptions"]:checked')].map(box => box.value);
   const radios = document.querySelector('input[name="gameDifficulties"]:checked');
+  p.append(em);
 
   // Validation branches
   if (trimmedInput === "") {
@@ -105,9 +123,14 @@ document.addEventListener("submit", (e) => {
   } else if (gameType.value === "") {
     em.textContent = "Please select a game type from the dropdown menu.";
     textBox.append(p);
-    gameType.focus();
   } else if (submittedPlayers === "") {
     em.textContent = "Please enter a number.";
+    textBox.append(p);
+    gamePlayers.focus();
+  } else if (Number.isNaN(playerCount)) {
+    em.textContent = "Please enter a numeric value.";
+    textBox.append(p);
+    gamePlayers.focus();
   } else if (!isWholeNumber(playerCount)) {
     em.textContent = "Please enter a whole number.";
     textBox.append(p);
@@ -119,44 +142,102 @@ document.addEventListener("submit", (e) => {
   } else if (radios === null) {
     em.textContent = "Please select a difficulty.";
     textBox.append(p);
-    document.querySelector('input[name="gameDifficulties"]').focus();
-  } else if (checkedValue.includes("F") && checkedValue.includes("L")) {
+  } else if (checkedValue.includes("Fast Play") && checkedValue.includes("Long Game")) {
     em.textContent = "Game cannot be Fast Play and Long Game. Please select one or the other.";
     textBox.append(p);
     document.querySelector('input[name="gameOptions"]').focus();
   } else {
-    
+    const gameTypePosition = gameTypeAbb.indexOf(gameType.value);
+    const gameTypeName = gameTypes[gameTypePosition];
+
+    const game = new Game(trimmedInput, gameTypeName, playerCount, radios.value, checkedValue)
+    console.log(game);
+
+    gameLibrary.addGame(game);
+
+    console.log(gameLibrary.games);
+    em.textContent = trimmedInput + " has been added to game library.";
+    textBox.append(p);
   }
 });
 
+// New Game Btn
+document.getElementById("newGameBtn").addEventListener("click", () => {
+  em.textContent = "";
+  textBox.append(p);
+});
 
-// Game Library
-const displayGameLibrary = document.querySelector(".displayGameLibrary");
+// Reset Btn
+document.getElementById("resetBtn").addEventListener("click", () => {
+  em.textContent = "";
+  textBox.append(p);
 
-const gameLibrary = {
-  games: [],
-  addGame(game) {
-    this.games.push(game);
+  gameLibrary.games = [];
+  gameBoxes.innerHTML = "";
+});
+
+// Display Library button
+document.getElementById("displayLibraryBtn").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  if (gameLibrary.games.length === 0) {
+    em.textContent = "";
+    em.textContent = "No games in library."
+    textBox.append(p);
+  } else {
+    gameBoxes.innerHTML = "";
+
+    gameLibrary.games.forEach((game) => {
+      const div = document.createElement("div");
+      div.classList.add("library-games");
+
+      const gameTitle = document.createElement("h3");
+      gameTitle.textContent = game.title;
+
+      const wrapperA = document.createElement("div");
+      const labelA = document.createElement("p");
+      labelA.textContent = "Game Type";
+      labelA.classList.add("labels")
+      const valueA = document.createElement("p");
+      valueA.textContent = game.type;
+      wrapperA.append(labelA, valueA);
+
+      const wrapperB = document.createElement("div");
+      const labelB = document.createElement("p");
+      labelB.textContent = "Players";
+      labelB.classList.add("labels");
+      const valueB = document.createElement("p");
+      valueB.textContent = game.playerCount;
+      wrapperB.append(labelB, valueB);
+
+      const wrapperC = document.createElement("div");
+      const labelC = document.createElement("p");
+      labelC.textContent = "Difficulty Rating";
+      labelC.classList.add("labels");
+      const valueC = document.createElement("p");
+      valueC.textContent = game.rating;
+      wrapperC.append(labelC, valueC);
+
+      const wrapperD = document.createElement("div");
+      const labelD = document.createElement("p");
+      labelD.textContent = "Game Options";
+      labelD.classList.add("labels");
+
+      if (game.extras.length === 0) {
+        labelD.textContent = "No Game Options";
+        wrapperD.append(labelD);
+      } else {
+        const ul = document.createElement("ul");
+        for (let i = 0; i < game.extras.length; i++) {
+          const li = document.createElement("li");
+          li.textContent = game.extras[i];
+          ul.append(li);
+        }
+        wrapperD.append(labelD, ul);
+      }
+
+      div.append(wrapperA, wrapperB, wrapperC, wrapperD);
+      gameBoxes.append(div);
+    })
   }
-}
-
-class Game {
-  constructor(title, type, playerCount, rating, extras = []) {
-    this.title = title;
-    this.type = type;
-    this.playerCount = playerCount;
-    this.rating = rating;
-    this.extras = extras;
-  }
-}
-
-// What’s next
-
-// Once the checkbox selector is fixed, validation is complete. 
-// After that comes the success path: add a final else after the chain where you will:
-
-// Build a new Game(...) from the values 
-// (trimmedInput, gameType.value, playerCount, radios.value, and the checkedValue array).
-// console.log the game.
-// Call gameLibrary.addGame(...).
-// console.log the library.
+});
