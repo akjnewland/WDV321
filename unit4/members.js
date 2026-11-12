@@ -38,6 +38,12 @@ const listRegistrations = () => {
 
 function deleteCookie(cookie) {
   document.cookie = `${cookie}=; max-age=0; path=/`;
+
+  if (getCookie(cookie) === null){
+      console.log(`${cookie} was deleted.`)
+    } else {
+      console.log(`${cookie} was not deleted.`)
+    }
 }
 
 function loadMemberPage() {
@@ -62,6 +68,7 @@ function loadMemberPage() {
 
   document.getElementById("deleteCookieBtn").addEventListener("click", () => {
     deleteCookie("authorizedUser");
+    
   })
 }
 
