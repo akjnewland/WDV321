@@ -8,6 +8,8 @@
   <style>
     * {
       box-sizing: border-box;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color:#08141F;
     }
 
     body {
@@ -61,22 +63,17 @@
     .pageHeader {
       color: blue;
     }
-  </style>
-  <script>
-    //Instructions:
-    //1. This page will check for an authorized user cookie.  If there isn't one return the user to the home/index page.
-    //      If it is an authorized user then display the page and contents.
-    //
-    //2. Each time an authorized user comes to this page display the current value of the hit counter next to "Current Activity:"
-    //
-    //3. Access the eventRegistration object from local storage.
-    //      Display the guest information as formatted content under "Current Registrations" in the right column
-    //      Number the guests
-    //
-    //4. Display Cookie button should show the current cookies in the console
-    //5. Delete Cookie button should delete the authorization
 
-  </script>
+    .attendees {
+      border:1px solid rgba(58, 124, 165, 1);
+      box-shadow:0 0 10px rgba(58, 124, 165, 1);
+      padding:1em;
+      margin:1em;
+      background-color:burlywood;
+      
+    }
+  </style>
+  <script src="members.js" defer></script>
 </head>
 
 <body>
@@ -99,8 +96,8 @@
       <section class="leftColumn">
         <h3>Member Information</h3>
         <p>
-          <button>Display Cookie</button>
-          <button>Delete Authorization Cookie</button>
+          <button id="displayCookieBtn">Display Cookie</button>
+          <button id="deleteCookieBtn">Delete Authorization Cookie</button>
         </p>
       </section>
       <section class="rightColumn">
@@ -110,13 +107,14 @@
         </div>
         <div>
           <h3>Current Registrations</h3>
+          <div id="currRegistrationsList"></div>
         </div>
       </section>
     </main>
 
     <footer>
-      <p>Copyright &copy;YYYY All rights reserved.</p>
-      <p>Current Activity: ???</p>
+      <p id="copyright">Copyright &copy;YYYY All rights reserved.</p>
+      <p id="hitCounter">Current Activity: ???</p>
     </footer>
 
   </div>
