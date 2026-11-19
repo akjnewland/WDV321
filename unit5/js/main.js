@@ -1,6 +1,6 @@
 //add additional imports here (functions from ui.js)
 import { fetchData } from "./api.js";
-import { showError, showLoading } from "./ui.js";
+import { showError, showLoading, clearLoading, renderResults } from "./ui.js";
 
 // Create a click event handler on the "Search" button to fetch the data.
 // This will NOT call the Fetch API directly, instead it will call a function defined in api.js
@@ -14,14 +14,16 @@ document.getElementById("search-button").addEventListener("click", async () => {
   const userInput = document.getElementById("name").value;
 
   try {
+    //   - Fetch the data
     const results = await fetchData(userInput);
     console.log(results);
+    //   - Clear the loading status
+    clearLoading();
+    //   - Render results
+    renderResults(results);
   } catch (error) {
+    //   - Include Error handling - i.e. try/catch errors
     console.log(error);
-    showError(error);
+    showError(error.message);
   }
-  //   - Fetch the data
-  //   - Clear the loading status
-  //   - Render results
-  //   - Include Error handling - i.e. try/catch errors
 })

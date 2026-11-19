@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 2rem;
@@ -15,3 +20,7 @@ body {
 .loading {
   color: blue;
 }
+
+/* add loading spinner */
+
+/* style cards */
