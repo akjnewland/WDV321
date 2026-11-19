@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Euphoria+Script&display=swap');
+
+.euphoria-script-regular {
+  font-family: "Euphoria Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.navbar {
+  background-color: #b1d3f6;
+}
+
+#recipe-header-text {
+  font-weight: bold;
+  font-family: "Euphoria Script", cursive;
+  font-size: 3rem;
+  color:black;
+  text-decoration: none;
+}
+
+#banner-image {
+  height:30rem;
+  margin-bottom:0;
+}
+
+#banner-image img {
+  object-position: center 70%;
+}
+
+#recipe-manager-intro {
+  background-color: #b1d3f6;
+  margin-top:0;
+  margin-bottom:5rem;
+  padding:1em;
+  font-size: 20px;
+  font-weight:bold;
+}
+
+#recipe-manager-intro h1 {
+  font-family: "Euphoria Script", cursive;
+  font-size: 10rem;
+}
+
+#recipe-manager-intro h2 {
+  padding-top:0.5em;
+  padding-bottom:1em;
+  font-style: italic;
+  font-weight: bolder;
+}
+
+#arrow-img {
+  width:2em;
+  height:auto;
+}
+
+.tab-content {
+  padding:10em;
+  border-left:1px solid #c6cbcf;
+  border-right:1px solid #c6cbcf;
+  border-bottom:1px solid #c6cbcf;
+}
+
+#overview-tab {
+  background-color: #fff9b1;
+  padding:1em;
+}
+
+#ingredients-tab {
+  background-color: #daf7a1;
+  padding:1em;
+}
+
+#steps-tab {
+  background-color:#6ed8fa;
+  padding:1em;
+}
+
+#notes-tab {
+  background-color:#ffcee0;
+  padding:1em;
+}
+
+#delete-btn {
+  background-color:#f4a09a;
+}
+
+#submit-btn {
+  background-color: #a8dba8;
+}
+
+footer {
+  background-color: #77ccc7;
+  margin-top:2em;
+}
+
+footer p {
+  font-size:0.75rem;
+  font-style: italic;
+  text-align: center;
+  color:black;
+  padding:1em;
+  margin:0;
+}
