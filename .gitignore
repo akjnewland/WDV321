@@ -1,2 +1,4 @@
 .DS_Store
 mocha_chai_demo/node_modules/
+mocha_chai_demo/package.json
+mocha_chai_demo/package-lock.json
