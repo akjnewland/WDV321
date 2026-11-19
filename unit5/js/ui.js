@@ -9,3 +9,9 @@ export function showLoading() {
   status.textContent = 'Loading...';
   status.className = 'loading';
 }
+
+export function showError(message){
+  const status = document.getElementById("status");
+  status.textContent = message;
+  status.className = "error";
+}
