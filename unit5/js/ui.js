@@ -35,6 +35,7 @@ export function renderResults(productList) {
   if (productList.products.length > 0) {
     productList.products.forEach((product) => {
     const div = document.createElement("div");
+    div.className = "product-card";
 
       div.append(
         createTag("h2", product.title),

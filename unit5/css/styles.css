@@ -8,6 +8,10 @@ body {
   margin: 2rem;
 }
 
+#controls {
+  margin-left:1rem;
+}
+
 #status {
   margin: 1rem 0;
   font-weight: bold;
@@ -21,6 +25,37 @@ body {
   color: blue;
 }
 
-/* add loading spinner */
+#results {
+  display:flex;
+  flex-wrap:wrap;
+}
 
 /* style cards */
+.product-card {
+  display:flex;
+  flex-direction: column;
+  width:30%;
+  border:1px solid grey;
+  box-shadow: 0 2px 10px 4px grey;
+  border-radius:12px;
+  padding:1em;
+  margin:0.625em;
+}
+
+.product-card p {
+  font-size:1em;
+  padding-top:0;
+  margin-top:0;
+}
+
+.product-card h3 {
+  padding-bottom:0;
+  margin-bottom:0;
+}
+
+.product-card h2 {
+  font-weight:bolder;
+  text-align: center;
+  padding-bottom:0;
+  margin-bottom:0;
+}
