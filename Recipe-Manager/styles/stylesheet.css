@@ -14,6 +14,18 @@
   background-color: #b1d3f6;
 }
 
+#searchbar {
+  flex: 1 1 auto;        /* grow ratio 4, basis 0 */
+  width: auto;        /* cancel width: 100% */
+  min-width: 0;
+}
+
+
+#searchbar-btn {
+  flex: 0 0 auto;        /* grow ratio 1 */
+  padding-inline: 1rem;
+}
+
 #recipe-header-text {
   font-weight: bold;
   font-family: "Euphoria Script", cursive;
@@ -55,6 +67,33 @@
 #arrow-img {
   width:2em;
   height:auto;
+}
+
+#cardstack-title {
+  text-align: left;
+  padding-left:1.5em;
+}
+
+#recipe-list {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#add-recipe-btn {
+  margin-bottom:1em;
+  padding:1em;
+}
+
+#recipe-list p {
+  border:1px solid grey;
+  margin:0.1em;
+  padding:5px auto;
+  width:100%;
+}
+
+#recipe-meas-btns {
+  margin:5px;
 }
 
 .tab-content {

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Manager</title>
+  <link href="styles/stylesheet.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar md:navbar-expand bg-1">
+    <div class="container-fluid">
+      <img src="media/diet.png" class="w-5 navbar-brand me-0" alt="Recipe Icon">
+      <a href="index.html" class="p-0" id="recipe-header-text">Recipe Manager</a>
+      <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarDrawer"
+        aria-controls="navbarDrawer" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
+      </button>
+      <dialog class="drawer drawer-end" tabindex="-1" id="navbarDrawer" aria-labelledby="navbarDrawerLabel">
+        <div class="drawer-header">
+          <h5 class="drawer-title" id="navbarDrawerLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+        </div>
+        <div class="drawer-body mb-2 md:mb-0">
+          <ul class="nav navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" type="button" data-bs-toggle="menu" aria-expanded="false">
+                Recipes
+              </button>
+              <div class="menu">
+                <a class="menu-item" href="#">Action</a>
+                <a class="menu-item" href="#">Another action</a>
+                <hr class="menu-divider">
+                <a class="menu-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+          <form class="hstack gap-2" role="search">
+            <input class="form-control" type="search" placeholder="Search Recipes" aria-label="Search" id="searchbar"/>
+            <button class="btn-solid theme-secondary" id="searchbar-btn" type="submit">Search</button>
+          </form>
+        </div>
+      </dialog>
+    </div>
+  </nav>
+
+  <div class="container-fluid p-0 m-0" id="banner-image">
+    <img src="media/pexels-karola-g-5718029.jpg" class="w-100 h-100 object-fit-cover" alt="example">
+  </div>
+
+  <div class="container-fluid text-center w-100" id="recipe-manager-intro">
+    <h1> The Recipe Manager</h1>
+    <h2>How it works:</h2>
+    <div class="container-fluid d-flex justify-content-center align-items-center gap-3">
+      <p>Click the "Add New Recipe" button.</p>
+      <img src="media/arrow.png" id="arrow-img">
+      <p>Enter your recipe's information into the form fields.</p>
+      <img src="media/arrow.png" id="arrow-img">
+      <p>Click "Submit Recipe" and you're done!</p>
+      <img src="media/arrow.png" id="arrow-img">
+      <p>To edit or delete a recipe, simply select the edit or delete buttons.</p>
+    </div>
+  </div>
+
+  <!-- Columns -->
+  <div class="container-fluid text-center mx-0">
+    <div class="row align-items-start">
+      <div class="col-4" id="cardstack">
+        <!-- Cards -->
+        <h2 id="cardstack-title">Featured Recipes</h2>
+        <section class="card mb-3" style="max-width: 320px">
+          <img src="media/pexels-paulina-klys-2155606640-34657337.jpg" class="card-img-top" alt="example">
+          <div class="card-body">
+            <h4 class="card-title">Starter Recipe</h4>
+            <p class="card-text">An example recipe to get you started. Feel free to delete this recipe!</p>
+            <a href="#" class="btn-solid theme-primary">See Recipe</a>
+          </div>
+        </section>
+        <section class="card" style="max-width: 320px">
+          <img src="media/pexels-jahratreza-39853119.jpg" class="card-img-top" alt="example">
+          <div class="card-body">
+            <h4 class="card-title">Example Recipe</h4>
+            <p class="card-text">This is one of my favorites. Hope you like it too!</p>
+            <a href="#" class="btn-solid theme-primary">See Recipe</a>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-5">
+        <!-- Recipe Tabs -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview-tab-pane"
+              type="button" role="tab" aria-controls="overview-tab-pane" aria-selected="true">Overview</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="ingredients-tab" data-bs-toggle="tab" data-bs-target="#ingredients-tab-pane"
+              type="button" role="tab" aria-controls="ingredients-tab-pane" aria-selected="false">Ingredients</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="steps-tab" data-bs-toggle="tab" data-bs-target="#steps-tab-pane" type="button"
+              role="tab" aria-controls="steps-tab-pane" aria-selected="false">Steps</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes-tab-pane" type="button"
+              role="tab" aria-controls="notes-tab-pane" aria-selected="false">Notes</button>
+          </li>
+        </ul>
+        <div class="tab-content position-relative" id="myTabContent">
+          <div class="tab-pane show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab"
+            tabindex="0">
+            <div id="recipe-overview">This is where the recipe overview information will be displayed.</div>
+            <div class="d-flex position-absolute start-0 bottom-0 end-0 m-3 justify-content-between">
+              <button type="button" class="btn" id="delete-btn">Delete Recipe</button>
+              <button type="button" class="btn" id="edit-btn">Edit Recipe</button>
+            </div>
+          </div>
+          <div class="tab-pane" id="ingredients-tab-pane" role="tabpanel" aria-labelledby="ingredients-tab"
+            tabindex="0">
+            <div class="btn-group btn-group-divider position-absolute end-0 top-0" role="group" aria-label="Basic example" id="recipe-meas-btns">
+              <button type="button" class="btn-solid theme-primary" id="half-meas-btn">1/2X</button>
+              <button type="button" class="btn-solid theme-primary active" id="full-meas-btn">1X</button>
+              <button type="button" class="btn-solid theme-primary" id="double-meas-btn">2X</button>
+            </div>
+            <div id="recipe-ingredients">This will be the ingredients list for the recipe.</div>
+            <div class="d-flex position-absolute bottom-0 end-0 m-3 justify-content-between">
+            <button type="button" class="btn" id="edit-btn">Edit Recipe</button>
+          </div>
+          </div>
+          <div class="tab-pane" id="steps-tab-pane" role="tabpanel" aria-labelledby="steps-tab" tabindex="0">
+            <div id="recipe-steps">This tab contains the steps for the recipe.</div>
+            <div class="d-flex position-absolute bottom-0 end-0 m-3 justify-content-between">
+            <button type="button" class="btn" id="edit-btn">Edit Recipe</button>
+          </div>
+          </div>
+          <div class="tab-pane" id="notes-tab-pane" role="tabpanel" aria-labelledby="notes-tab" tabindex="0">
+            <div id="recipe-notes">Notes and pictures.</div>
+            <div class="d-flex position-absolute bottom-0 end-0 m-3 justify-content-between">
+            <button type="button" class="btn" id="edit-btn">Edit Recipe</button>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="container">
+          <h3>Recipe Rolodex</h3>
+          <button type="button" class="btn" id="add-recipe-btn">Add Recipe to List</button>
+          <div class="container" id="recipe-list">
+            <p>Pineapple Hamburgers</p>
+            <p>Orzo and Goat Cheese</p>
+            <p>Margherita Pizza</p>
+            <p>Oreo Fluff</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Recipe Manager created by Austin Newland for an academic project. Copyright 2026.</p>
+  </footer>
+</body>
+
+</html>
